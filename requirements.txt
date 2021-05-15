@@ -7,3 +7,4 @@ MarkupSafe==1.1.1
 Werkzeug==1.0.1
 flask_sqlalchemy==2.5.1
 boto3==1.17.73
+pymysql==1.0.2
