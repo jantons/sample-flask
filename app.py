@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{}:{}@{}/{}?sslmode=require'.format(
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{}:{}@{}:25060/{}?ssl-mode=REQUIRED'.format(
    os.getenv('DB_USER'),
    os.getenv('DB_PASSWORD'),
    os.getenv('DB_HOST'),
@@ -36,6 +36,22 @@ db.create_all()
 #                        endpoint_url=os.getenv('SPACES_URL'),
 #                        aws_access_key_id=os.getenv('SPACES_KEY'),
 #                        aws_secret_access_key=os.getenv('SPACES_SECRET'))
+
+#file = request.files['filefield']
+#conn.upload_fileobj(file, 'mybucket', 'mykey')
+
+#app.route('/upload', methods=['GET', 'POST'])
+#def upload():
+#    try:
+#        latestfile = request.form.get('filetoupload')
+#        conn = boto3.client('s3', region_name="eu-west-1", endpoint_url="example.com", aws_access_key_id='the access key here', aws_secret_access_key='the secret key here',)
+#        conn.create_bucket(Bucket="mytestbucket22")
+#        bucket_name = "mytestbucket22"
+#        conn.upload_file(latestfile, bucket_name, latestfile)
+#        return render_template('dashboard.html', name=current_user.username, sumsg="Upload done!")
+#    except Exception as ermsg:
+#        print(ermsg)
+#        return render_template('dashboard.html', name=current_user.username, ermsg=ermsg)
 
 
 @app.route("/")
